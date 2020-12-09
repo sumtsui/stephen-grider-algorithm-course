@@ -8,6 +8,35 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.currentEnd = null
+    this.currentFront = 0
+    this.data = {}
+  }
+  add(item) {
+    if (this.currentEnd === null) {
+      this.currentEnd = 0
+    } else {
+      this.currentEnd++
+    }
+    this.data[this.currentEnd] = item
+  }
+  remove() {
+    let i = this.currentFront
+    let result
+    while (i <= this.currentEnd) {
+      if (this.data[i]) {
+        result = this.data[i]
+        this.currentFront++
+        delete this.data[i]
+        break
+      }
+      i++
+    }
+
+    return result
+  }
+}
 
 module.exports = Queue;

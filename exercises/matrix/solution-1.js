@@ -17,6 +17,8 @@
 
 // array index, you need to figure it out
 // why pushing won't work
+// findIndex can return 0, it is falsy but it is valid
+// don't use Array(n), the items in it can't evaluate to true with item === undefined
 
 function matrix(n) {
   const result = [];
@@ -107,9 +109,5 @@ function matrix(n) {
   // console.log('result', result);
   return result;
 }
-
-// console.log('3', matrix(3));
-// console.log('4', matrix(4));
-console.log('8', matrix(8));
 
 module.exports = matrix;

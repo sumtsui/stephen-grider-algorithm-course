@@ -10,8 +10,8 @@
 
 function reverse(str) {
   let reversed = '';
-  for (const letter of str) {
-    reversed = letter + reversed;
+  for (const char of str) {
+    reversed = char + reversed;
   }
 
   return reversed;

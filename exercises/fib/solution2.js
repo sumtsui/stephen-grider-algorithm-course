@@ -8,18 +8,18 @@
 // Example:
 //   fib(4) === 3
 
+const memoi = {};
+
 function fib(n) {
-  const arr = [];
-  for (let i = 0; i <= n; i++) {
-    if (i === 0) arr.push(0);
-    else if (i === 1) arr.push(1);
+  if (n > 1) {
+    if (memoi[n]) return memoi[n];
     else {
-      const sum = arr[i - 1] + arr[i - 2];
-      arr.push(sum);
+      const result = fib(n - 1) + fib(n - 2);
+      memoi[n] = result;
+      return result;
     }
   }
-
-  return arr[n];
+  return n;
 }
 
 module.exports = fib;

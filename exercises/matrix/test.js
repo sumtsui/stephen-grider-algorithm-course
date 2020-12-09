@@ -1,4 +1,4 @@
-const matrix = require('./index');
+const matrix = require('./solution-1');
 
 test('matrix is a function', () => {
   expect(typeof matrix).toEqual('function');

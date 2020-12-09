@@ -8,6 +8,24 @@
 // for counting and verifying numbers of characters in a string
 // we can use the same techique
 
-function maxChar(str) {}
+function maxChar(str) {
+  const chars = {};
+  let maxKey;
+
+  for (let c of str) {
+    chars[c] = chars[c] + 1 || 1;
+  }
+
+  for (let c in chars) {
+    if (!maxKey) maxKey = c;
+    else {
+      if (chars[c] > chars[maxKey]) {
+        maxKey = c;
+      }
+    }
+  }
+
+  return maxKey;
+}
 
 module.exports = maxChar;
