@@ -60,7 +60,7 @@ describe('GetLast', () => {
   });
 });
 
-describe.skip('Clear', () => {
+describe('Clear', () => {
   test('empties out the list', () => {
     const l = new List();
     expect(l.size()).toEqual(0);
@@ -147,7 +147,7 @@ describe('InsertLast', () => {
   });
 });
 
-describe.skip('GetAt', () => {
+describe('GetAt', () => {
   test('returns the node at given index', () => {
     const l = new List();
     expect(l.getAt(10)).toEqual(null);
@@ -164,7 +164,7 @@ describe.skip('GetAt', () => {
   });
 });
 
-describe.skip('RemoveAt', () => {
+describe('RemoveAt', () => {
   test('removeAt doesnt crash on an empty list', () => {
     const l = new List();
     expect(() => {
@@ -217,7 +217,7 @@ describe.skip('RemoveAt', () => {
   });
 });
 
-describe.skip('InsertAt', () => {
+describe('InsertAt', () => {
   test('inserts a new node with data at the 0 index when the list is empty', () => {
     const l = new List();
     l.insertAt('hi', 0);
@@ -272,7 +272,7 @@ describe.skip('InsertAt', () => {
   });
 });
 
-describe.skip('ForEach', () => {
+describe('ForEach', () => {
   test('applies a transform to each node', () => {
     const l = new List();
 
@@ -289,6 +289,30 @@ describe.skip('ForEach', () => {
     expect(l.getAt(1).data).toEqual(12);
     expect(l.getAt(2).data).toEqual(13);
     expect(l.getAt(3).data).toEqual(14);
+  });
+});
+
+describe('next', () => {
+  test('next returns the next node starting from 0', () => {
+    const l = new List();
+
+    l.insertLast(1);
+    l.insertLast(2);
+    l.insertLast(3);
+    l.insertLast(4);
+
+    expect(l.next().value.data).toEqual(1);
+    expect(l.next().value.data).toEqual(2);
+    expect(l.next().value.data).toEqual(3);
+    expect(l.next().value.data).toEqual(4);
+    expect(l.next()).toEqual({
+      value: null,
+      done: true
+    });
+    expect(l.next()).toEqual({
+      value: null,
+      done: true
+    });
   });
 });
 
