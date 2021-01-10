@@ -12,6 +12,20 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+function circular(list) {
+  let p1, p2
+  p1 = p2 = list.getFirst()
+
+  while (p2.next && p2.next.next) {
+    p2 = p2.next.next
+    p1 = p1.next
+
+    if (p1 === p2) {  // js can check if 2 var point to same obj in memory by simply ===
+      return true
+    }
+  }
+
+  return false
+}
 
 module.exports = circular;

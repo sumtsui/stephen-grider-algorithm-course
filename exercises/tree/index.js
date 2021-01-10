@@ -7,11 +7,81 @@
 // 2) Create a tree class. The tree constructor
 // should initialize a 'root' property to null.
 // 3) Implement 'traverseBF' and 'traverseDF'
-// on the tree class.  Each method should accept a
+// on the tree class. Each method should accept a
 // function that gets called with each element in the tree
 
-class Node {}
+class Node {
+  constructor(data) {
+    this.data = data
+    this.children = []
+  }
+  add(data) {
+    this.children.push(new Node(data))
+  }
+  remove(data) {
+    this.children = this.children.filter(c => c.data !== data)
+  }
+}
 
-class Tree {}
+class Tree {
+  constructor() {
+    this.root = null
+  }
+
+  traverseBF(cb) {
+    function iterate(node) {
+      if (node.children.length > 0) {
+        node.children.forEach(c => {
+          cb(c)
+        })
+        node.children.forEach(iterate)
+      }
+    }
+    cb(this.root)
+    iterate(this.root)
+  }
+  
+  traverseDF(cb) {
+    function bf(node) {
+      cb(node)
+      if (node.children.length > 0) {
+        node.children.forEach(bf)
+      }
+    }
+    bf(this.root)
+  }
+
+  traverseBF2(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift();
+
+      arr.push(...node.children);
+      fn(node);
+    }
+  }
+
+  traverseDF2(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift();
+
+      arr.unshift(...node.children);
+      fn(node);
+    }
+  }
+}
+
 
 module.exports = { Tree, Node };
+
+
+
+
+
+
+
+
+
+
+
